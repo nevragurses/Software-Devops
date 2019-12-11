@@ -1,0 +1,5 @@
+<flow name="Flow1" doc:name="Flow1">
+	<http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8082" path="mainData" doc:name="HTTP" />
+	<cxf:jaxws-service serviceClass="com.test.services.schema.maindata.v1.MainData" doc:name="SOAP" />
+	<component class="com.test.services.schema.maindata.v1.Impl.MainDataImpl" doc:name="Java" />
+</flow>
