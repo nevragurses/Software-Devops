@@ -24,7 +24,9 @@ function undeployPost(jsonData){
 		{ json: jsonData },
 		function (error, response, body) {
 			if (!error && response.statusCode == 200) {
-				console.log(body);
+				// no problems
+			} else {
+				console.log("Error!!!!");
 			}
 		}
 	);
