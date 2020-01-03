@@ -30,6 +30,12 @@ io.on('connection', function(socket){
 	socket.on('undeploy', function(data){
 		undeployPost(data)
 	});
+	socket.on('upload', function(data){
+		uploadPost(data)
+	});
+	socket.on('assignment', function(data){
+		assignmentPost(data)
+	});
 });
 
 back.post('/', function(req, res){
@@ -45,7 +51,10 @@ back.post('/', function(req, res){
 function undeployPost(jsonData){
 	request.post(
 		'http://localhost:8081',
-		{ json: jsonData },
+		{
+			group : 8, 
+			json: jsonData
+		},
 		function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				// no problems
@@ -54,4 +63,35 @@ function undeployPost(jsonData){
 			}
 		}
 	);
+}
+function uploadPost(jsonData){
+	request.post(
+		'http://localhost:8081',
+		{
+			group : 6, 
+			json: jsonData
+		},
+		function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// no problems
+			} else {
+				console.log("Error!!!!");
+			}
+		}
+		);
+}
+function assignmentPost(jsonData){
+	request.post(
+		'http://localhost:8081',
+		{
+			json: jsonData
+		},
+		function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// no problems
+			} else {
+				console.log("Error!!!!");
+			}
+		}
+		);
 }
