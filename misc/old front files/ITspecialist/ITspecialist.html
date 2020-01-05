@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>IT Specialist</title>
+		<link href="/styles.css" rel="stylesheet"/>
+	</head>
+
+		<body>
+		<div class="w3-row-padding">
+			<div class="w3-third">
+			<input id="ProjectName" class="w3-input w3-border" type="text" placeholder="Project Name">
+			</div>
+			<input id="ProjectDescription" class="w3-input w3-border" type="text" placeholder="Project Description">
+		</div>
+		<button id="AssignmentButton">Assignment</button>
+		<div>
+		<br>
+		<br>
+		<br>
+ 
+		<button id="MonitorButton" onclick="Monitor()">Monitor</button>
+		
+		</div>
+		<br>
+		<br>
+		<br>
+
+
+		<input id="UndeployProjectName" class="w3-input w3-border" type="text" placeholder="Project Name">
+		<button id="UndeployButton">Undeploy</button>
+		
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/ITspecialist/calls.js"></script>
+		<script> function Monitor() {
+    		location.replace("http://localhost:4001/")}</script>
+
+	</body>
+</html>

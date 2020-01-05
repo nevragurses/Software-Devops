@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Manager</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheet.css">
+    </head>
+
+        <body>
+        <div class="it-page">
+            <div class="w3-third">
+                <input id="newProjectName" class="w3-input w3-border" type="text" placeholder="New Project">
+            </div>
+        
+        <button id="newProjectStartButton">New Project Start</button>
+        <br>
+        <br>
+        <br>
+        <button id="MonitorButton" onclick="Monitor()">Monitor</button>
+        <br>
+        <br>
+        <br>
+        <input id="UndeployProjectName" class="w3-input w3-border" type="text" placeholder="Project Name">
+        <button id="UndeployButton">Undeploy</button>
+        </div>
+        
+
+
+        
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/manager/calls.js"></script>
+        <script> function Monitor() {
+            location.replace("http://localhost:4001/")}</script>
+
+    </body>
+</html>

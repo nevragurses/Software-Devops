@@ -36,6 +36,9 @@ io.on('connection', function(socket){
 	socket.on('assignment', function(data){
 		assignmentPost(data)
 	});
+	socket.on('newProject', function(data){
+		assignmentPost(data)
+	});
 });
 
 back.post('/', function(req, res){
@@ -52,7 +55,6 @@ function undeployPost(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
-			group : 8, 
 			json: jsonData
 		},
 		function (error, response, body) {
@@ -68,7 +70,6 @@ function uploadPost(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
-			group : 6, 
 			json: jsonData
 		},
 		function (error, response, body) {
@@ -81,6 +82,21 @@ function uploadPost(jsonData){
 		);
 }
 function assignmentPost(jsonData){
+	request.post(
+		'http://localhost:8081',
+		{
+			json: jsonData
+		},
+		function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// no problems
+			} else {
+				console.log("Error!!!!");
+			}
+		}
+		);
+}
+function newProject(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
