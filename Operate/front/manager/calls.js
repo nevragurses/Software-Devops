@@ -1,0 +1,20 @@
+var socket = io.connect('http://localhost:4001');
+
+document.getElementById("newProjectStartButton").addEventListener('click', function(){
+	socket.emit('newProject', {
+		payload: {NewProjectName: document.getElementById("newProjectName").value}
+		
+	});
+	document.getElementById("newProjectName").value = "";
+});
+document.getElementById("UndeployButton").addEventListener('click', function(){
+	socket.emit('undeploy', {
+		payload: {UndeployProjectName: document.getElementById("UndeployProjectName").value}
+		
+	});
+	document.getElementById("UndeployProjectName").value = "";
+});
+
+socket.on('postIncoming', function(data){
+	document.getElementById("UndeployProjectName").value = "got the value " + data.hi + " as an argument of \"hi\" in POST";
+});
