@@ -1,0 +1,11 @@
+body {
+    background-color: lightblue;
+}
+.form-group{
+    padding-top: 250px;
+}
+.form-control{
+    margin-left: 40%;
+   margin-right: 40%;
+}
+
