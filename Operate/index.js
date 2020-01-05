@@ -37,8 +37,9 @@ io.on('connection', function(socket){
 		assignmentPost(data)
 	});
 	socket.on('newProject', function(data){
-		assignmentPost(data)
+		newProjectPost(data)
 	});
+	
 });
 
 back.post('/', function(req, res){
@@ -96,10 +97,11 @@ function assignmentPost(jsonData){
 		}
 		);
 }
-function newProject(jsonData){
+function newProjectPost(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
+			group : 8, 
 			json: jsonData
 		},
 		function (error, response, body) {
@@ -109,5 +111,5 @@ function newProject(jsonData){
 				console.log("Error!!!!");
 			}
 		}
-		);
+	);
 }
