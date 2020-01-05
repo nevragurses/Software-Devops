@@ -36,6 +36,10 @@ io.on('connection', function(socket){
 	socket.on('assignment', function(data){
 		assignmentPost(data)
 	});
+	socket.on('newProject', function(data){
+		newProjectPost(data)
+	});
+	
 });
 
 back.post('/', function(req, res){
@@ -94,4 +98,20 @@ function assignmentPost(jsonData){
 			}
 		}
 		);
+}
+function newProjectPost(jsonData){
+	request.post(
+		'http://localhost:8081',
+		{
+			group : 8, 
+			json: jsonData
+		},
+		function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// no problems
+			} else {
+				console.log("Error!!!!");
+			}
+		}
+	);
 }
