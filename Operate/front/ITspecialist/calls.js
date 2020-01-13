@@ -4,9 +4,14 @@ var socket = io.connect('http://localhost:4001');
 
 document.getElementById("AssignmentButton").addEventListener('click', function(){
 	socket.emit('assignment', {
-		group: 5,
-		payload: {ProjectName: document.getElementById("ProjectName").value,
-		 ProjectDescription:document.getElementById("ProjectDescription").value}
+		origin:"4",
+		destination: "2",
+		action: "assignment",		
+
+		ProjectName: document.getElementById("ProjectName").value,
+		ProjectDescription:document.getElementById("ProjectDescription").value
+
+
 		
 	});
 	document.getElementById("ProjectName").value = "";
@@ -15,8 +20,10 @@ document.getElementById("AssignmentButton").addEventListener('click', function()
 
 document.getElementById("UndeployButton").addEventListener('click', function(){
 	socket.emit('undeploy', {
-		group: 5,
-		payload: {UndeployProjectName: document.getElementById("UndeployProjectName").value}
+		origin:"4",
+		destination: "2",
+		action: "undeploy",
+		UndeployProjectName: document.getElementById("ProjectName").value
 		
 	});
 	document.getElementById("UndeployProjectName").value = "";
@@ -25,5 +32,5 @@ document.getElementById("UndeployButton").addEventListener('click', function(){
 
 
 socket.on('postIncoming', function(data){
-	document.getElementById("ProjectName").value = "got the value " + data.hi + " as an argument of \"hi\" in POST";
+	document.getElementById("ProjectName").value = data.ProjectName;
 });

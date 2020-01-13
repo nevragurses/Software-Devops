@@ -2,14 +2,19 @@ var socket = io.connect('http://localhost:4001');
 
 document.getElementById("newProjectStartButton").addEventListener('click', function(){
 	socket.emit('newProject', {
-		payload: {NewProjectName: document.getElementById("newProjectName").value}
-		
+		origin:"4",
+		destination: "2",
+		action: "newProject",
+		NewProjectName: document.getElementById("newProjectName").value	
 	});
 	document.getElementById("newProjectName").value = "";
 });
 document.getElementById("UndeployButton").addEventListener('click', function(){
 	socket.emit('undeploy', {
-		payload: {UndeployProjectName: document.getElementById("UndeployProjectName").value}
+		origin:"4",
+		destination: "2",
+		action: "undeploy",
+		UndeployProjectName: document.getElementById("UndeployProjectName").value
 		
 	});
 	document.getElementById("UndeployProjectName").value = "";

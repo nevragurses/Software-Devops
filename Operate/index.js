@@ -1,6 +1,7 @@
 var express = require('express');
 var socket = require('socket.io');
 var request = require('request');
+var bodyParser = require('body-parser')
 
 
 
@@ -20,11 +21,11 @@ var backListener = back.listen(4000, function(){
 back.use(express.json());
 
 
-
 //*****************//
 //Frontend's socket//
 //*****************//
 var io = socket(frontListener);
+
 
 io.on('connection', function(socket){
 	socket.on('undeploy', function(data){
@@ -44,7 +45,10 @@ io.on('connection', function(socket){
 
 back.post('/', function(req, res){
 	io.emit('postIncoming', req.body);
-	res.send(req.body);
+	if(req.body.ProjectName == "deneme"){
+		res.send(req.body);
+	}
+	
 });	
 
 
@@ -101,7 +105,6 @@ function newProjectPost(jsonData){
 	request.post(
 		'http://localhost:8081',
 		{
-			group : 8, 
 			json: jsonData
 		},
 		function (error, response, body) {
